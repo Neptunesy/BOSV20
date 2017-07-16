@@ -9,7 +9,7 @@
         <relativePath>../common_parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <packaging>war</packaging>
     <groupId>com.itsun</groupId>
     <artifactId>bos_management</artifactId>
 

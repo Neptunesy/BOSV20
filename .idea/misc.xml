@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/bos_management" />
+  </component>
   <component name="IdProvider" IDEtalkID="BAD5ABD5D7617B631314DD1A89FC0CA8" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">
