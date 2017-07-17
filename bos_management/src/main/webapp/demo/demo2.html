@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tabs选项卡</title>
+    <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+    <!-- 导入easyui类库 -->
+    <link id="easyuiTheme" rel="stylesheet" type="text/css" href="../js/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../js/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../css/default.css">
+    <script type="text/javascript" src="../js/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        $(function (){
+            $("#mySun").click(function () {
+                $("#mytab").tabs('add',{
+                    title:'哈哈哈',
+                    content:'你好啊'
+                });
+            });
+        });
+    </script>
+</head>
+<body class="easyui-layout">
+        <div data-options="region:'north',title:'itsun管理系统'" style="height: 200px">北部区域</div>
+        <div data-options="region:'west',title:'菜单导航',split:true" style="width: 200px">
+            <!--折叠面板-->
+            <div class="easyui-accordion" data-options="fit:true">
+                <div data-options="title:'基础菜单'"><a id="mySun" href="javascript:void(0);" >点击添加选项卡</a></div>
+                <div data-options="title:'系统菜单'">面板二</div>
+            </div>
+        </div>
+
+        <div data-options="region:'center'">
+            <!--选项卡面板-->
+            <div id="mytab" class="easyui-tabs" data-options="fit:true">
+                <div data-options="title:'选项卡面板一'" style="display: block">  选项卡面板一</div>
+                <div data-options="title:'选项卡面板二'"> 选项卡面板二 </div>
+            </div>
+
+        </div>
+        <div data-options="region:'east'" style="width: 200px">东部区域</div>
+        <div data-options="region:'south'" style="height: 200px">南部区域</div>
+</body>
+</html>

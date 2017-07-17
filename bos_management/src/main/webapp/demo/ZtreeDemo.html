@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ztree的练习</title>
+    <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../js/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../js/easyui/locale/easyui-lang-zh_CN.js"></script>
+    <link rel="stylesheet" href="../js/easyui/themes/default/easyui.css"/>
+    <link rel="stylesheet" href="../js/easyui/themes/icon.css"/>
+    <!-- 引入ztree -->
+    <script src="../js/ztree/jquery.ztree.all-3.5.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="../js/ztree/zTreeStyle.css"/>
+
+    <script type="text/javascript">
+        $(function () {
+            var setting = {
+                data: {
+                    simpleData: {
+                        enable: true // 支持简单json数据格式
+                    }
+                }
+            };
+            var zNodes = [
+                {id:1,pId:0,name:"基础数据"},
+                {id:2,pId:0,name:"受理"},
+                {id:3,pId:0,name:"调度"},
+                {id:4,pId:0,name:"分拣管理"},
+                {id:11,pId:1,name:"基础档案设置"},
+                {id:12,pId:1,name:"收派标准"},
+                {id:13,pId:1,name:"班车管理"},
+                {id:14,pId:1,name:"快递员设置/倒班"},
+                {id:21,pId:2,name:"业务受理"},
+                {id:22,pId:2,name:"运单快速录入"},
+                {id:23,pId:2, name:"运单录入"},
+                {id:24,pId:2,name:"运单管理"},
+                {id:31,pId:3,name:"查台转单"},
+                {id:32,pId:3,name:"人工调度"},
+                {id:33,pId:3,name:"取派调度监控"},
+                {id:34,pId:3,name:"签收录入"},
+                {id:35,pId:3,name:"取消签收申请"},
+                {id:41,pId:4,name:"入库"},
+                {id:42,pId:4,name:"出库"},
+                {id:43,pId:4,name:"盘库"},
+                {id:44,pId:4,name:"合包"}
+
+
+            ];
+            $.fn.zTree.init($("#baseMenu"), setting, zNodes);
+
+        });
+    </script>
+</head>
+    <body class="easyui-layout">
+        <div data-options="region:'north',title:'North Title',split:true" style="height:100px;">
+            <div>
+                <img src="../images/logo.png" border="0">
+            </div>
+        </div>
+
+        <div data-options="region:'east',iconCls:'icon-reload',title:'East',split:true" style="width:100px;"></div>
+        <div data-options="region:'west',title:'菜单导航',split:true" style="width:100px;">
+            <!--折叠面板-->
+            <div class="easyui-accordion" data-options="fit:true">
+                <div data-options="title:'基础菜单'">
+                    <!-- 通过ztree 插件，制作树菜单 -->
+                    <ul id="baseMenu" class="ztree"></ul>
+                </div>
+                <div data-options="title:'系统菜单'">面板二</div>
+            </div>
+        </div>
+        <div data-options="region:'center',title:'center title'" style="padding:5px;">
+            <div id="myTab" class="easyui-tabs" data-options="fit:true">
+
+            </div>
+        </div>
+
+        <div data-options="region:'south',title:'South Title',split:true" style="height:100px;"></div>
+    </body>
+</html>
