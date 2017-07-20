@@ -19,7 +19,7 @@
 			$(function(){
 				// 先将body隐藏，再显示，不会出现页面刷新效果
 				$("body").css({visibility:"visible"});
-				
+
 				// 收派标准信息表格
 				$('#grid').datagrid( {
 					iconCls : 'icon-forward',
@@ -27,15 +27,37 @@
 					border : false,
 					rownumbers : true,
 					striped : true,
-					pageList: [30,50,100],
+					pageList: [10,30,50],
 					pagination : true,
 					toolbar : toolbar,
 					url : "../../data/standard.json",
 					idField : 'id',
 					columns : columns
 				});
-			});	
-			
+
+                $('#save').click(function () {
+                   // alert(2121);
+					if($("#fom1").form("validate")){
+					    $("#fom1").submit();
+					}
+//					$('#fom1').form('submit', {
+//						url:'../../standard_save.action',
+//						onSubmit: function(){
+//							var isValid = $(this).form('validate');
+//						//	alert("333");
+//							if (!isValid){
+//								$.messager.alert('提示!','提交失败,含有非法字段','error');	// 如果表单是无效的则隐藏进度条
+//							}
+//							return isValid;	// 返回false终止表单提交
+//						},
+//						success:function(){
+//							alert("提交成功!");
+//
+//						}
+//					})
+                });
+			});
+
 			//工具栏
 			var toolbar = [ {
 				id : 'button-add',
@@ -52,7 +74,7 @@
 					alert('修改');
 				}
 			}];
-			
+
 			// 定义列
 			var columns = [ [ {
 				field : 'id',
@@ -101,12 +123,14 @@
 
             $.extend($.fn.validatebox.defaults.rules, {
                 mobile: {
-                    validator: function(value, param){
+                    validator: function(value){
                         return /^(13|15|18|17)\d{9}$/i.test(value);
                     },
                     message: '手机号码格式不正确!'
                 }
             });
+
+
 		</script>
 	</head>
 
@@ -118,13 +142,13 @@
 		<div class="easyui-window" title="对收派标准进行添加或者修改" id="standardWindow" collapsible="false" minimizable="false" maximizable="false" modal="true" closed="true" style="width:600px;top:50px;left:200px">
 			<div region="north" style="height:31px;overflow:hidden;" split="false" border="false">
 				<div class="datagrid-toolbar">
-					<a id="save" icon="icon-save" href="#" class="easyui-linkbutton" plain="true">保存</a>
+					<a id="save" href="javascript:void(0);" icon="icon-save" class="easyui-linkbutton" plain="true">保存</a>
 				</div>
 			</div>
 
 			<div region="center" style="overflow:auto;padding:5px;" border="false">
 				
-				<form>
+				<form id="fom1" method="post">
 					<table class="table-edit" width="80%" align="center">
 						<tr class="title">
 							<td colspan="2">收派标准信息
@@ -143,33 +167,33 @@
 							<td>最小重量</td>
 							<td>
 								<input type="text" name="minWeight" 
-										class="easyui-numberbox" required="true" />
+										class="easyui-numberbox" data-options="required:true,suffix:'kg'"  />
 							</td>
 						</tr>
 						<tr>
 							<td>最大重量</td>
 							<td>
-								<input type="text" name="maxWeight" class="easyui-numberbox" required="true" />
+								<input type="text" name="maxWeight" class="easyui-numberbox" data-options="required:true,suffix:'kg'" />
 							</td>
 						</tr>
 						<tr>
 							<td>最小长度</td>
 							<td>
-								<input type="text" name="minLength" class="easyui-numberbox" required="true" />
+								<input type="text" name="minLength" class="easyui-numberbox" data-options="required:true,suffix:'m'"/>
 							</td>
 						</tr>
 						<tr>
 							<td>最大长度</td>
 							<td>
-								<input type="text" name="maxLength" class="easyui-numberbox" required="true" />
+								<input type="text" name="maxLength" class="easyui-numberbox"  data-options="required:true,suffix:'m'"/>
 							</td>
 						</tr>
-						<tr>
-							<td>手机号码</td>
-							<td>
-								<input type="text" data-options="validType:'mobile'" class="easyui-numberbox" required="true" />
-							</td>
-						</tr>
+						<!--<tr>-->
+							<!--<td>手机号码</td>-->
+							<!--<td>-->
+								<!--<input type="text" data-options="validType:'mobile'" class="easyui-numberbox" required="true" />-->
+							<!--</td>-->
+						<!--</tr>-->
 
 					</table>
 				</form>

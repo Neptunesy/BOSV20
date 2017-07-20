@@ -17,7 +17,7 @@
         <springdataredis.version>1.4.1.RELEASE</springdataredis.version>
         <activemq.version>5.2.0</activemq.version>
         <shiro.version>1.2.2</shiro.version>
-        <springdatajpa.version>1.9.0.RELEASE</springdatajpa.version>
+        <springdatajpa.version>1.7.2.RELEASE</springdatajpa.version>
         <jedis.version>2.6.2</jedis.version>
         <poi.version>3.11</poi.version>
         <c3p0.version>0.9.1.2</c3p0.version>
@@ -126,6 +126,12 @@
             <version>${struts2.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-json-plugin</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>
+
         <!-- hibernate 框架 -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -176,7 +182,7 @@
         <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc6</artifactId>
-            <version>11.2.0.3</version>
+            <version>11.2.0.1.0</version>
         </dependency>
 
         <!-- Excel解析工具类  -->
@@ -262,6 +268,7 @@
             <version>0.3.1</version>
         </dependency>
     </dependencies>
+
 
 
 </project>
