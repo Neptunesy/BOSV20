@@ -2,6 +2,10 @@ package com.itsun.bos.service.base;
 
 
 import com.itsun.bos.domain.base.Standard;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 /**
  * Created by SY on 2017-07-19.
@@ -11,4 +15,8 @@ import com.itsun.bos.domain.base.Standard;
 
 public interface StandardService {
     void save(Standard standard);
+
+    Page<Standard> findAll(Pageable pageable);
+
+    List<Standard> findAll();
 }

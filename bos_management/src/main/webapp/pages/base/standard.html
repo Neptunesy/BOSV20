@@ -22,17 +22,17 @@
 
 				// 收派标准信息表格
 				$('#grid').datagrid( {
-					iconCls : 'icon-forward',
-					fit : true,
-					border : false,
-					rownumbers : true,
-					striped : true,
-					pageList: [10,30,50],
-					pagination : true,
-					toolbar : toolbar,
-					url : "../../data/standard.json",
-					idField : 'id',
-					columns : columns
+                    iconCls: 'icon-forward',
+                    fit: true,
+                    border: false,
+                    rownumbers: true,
+                    striped: true,
+                    pageList: [30, 50, 100],
+                    pagination: true,
+                    toolbar: toolbar,
+                    url: "../../pageQuery.action",
+                    idField: 'id',
+                    columns: columns
 				});
 
                 $('#save').click(function () {
@@ -60,20 +60,43 @@
 
 			//工具栏
 			var toolbar = [ {
-				id : 'button-add',
-				text : '增加',
-				iconCls : 'icon-add',
-				handler : function(){
-					$('#standardWindow').window('open');
-				}
-			}, {
+                id: 'button-add',
+                text: '增加',
+                iconCls: 'icon-add',
+                handler: function () {
+                    $('#standardWindow').window('open');
+                }
+            }, {
 				id : 'button-edit',
 				text : '修改',
 				iconCls : 'icon-edit',
 				handler : function(){
-					alert('修改');
+                    var rows = $("#grid").datagrid('getSelections');
+                    if (rows.length != 1) {
+                        $.messager.alert('提示信息', '最多只能选择一行进行修改!', 'warning');
+                    } else {
+                        var rowdata = rows[0];
+                        $('#fom1').form('load', rowdata);
+                        $('#standardWindow').window('open');
+                    }
 				}
-			}];
+            },
+                {
+                    id: 'button-remove',
+                    text: '删除',
+                    iconCls: 'icon-cancel',
+                    handler: function () {
+                        $.messager.confirm('确认对话框', '您确认删除选中的信息吗?', function (flag) {
+                            if (flag) {
+                                var rows = $('#grid').datagrid('getSelections');
+
+                                alert(rows.length);
+
+                            }
+                        })
+                    }
+                }
+            ];
 
 			// 定义列
 			var columns = [ [ {
@@ -131,6 +154,7 @@
             });
 
 
+
 		</script>
 	</head>
 
@@ -147,8 +171,8 @@
 			</div>
 
 			<div region="center" style="overflow:auto;padding:5px;" border="false">
-				
-				<form id="fom1" method="post">
+
+				<form id="fom1" action="../../standard_save.action" method="post">
 					<table class="table-edit" width="80%" align="center">
 						<tr class="title">
 							<td colspan="2">收派标准信息

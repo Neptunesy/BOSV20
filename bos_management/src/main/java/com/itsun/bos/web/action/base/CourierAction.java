@@ -1,7 +1,7 @@
 package com.itsun.bos.web.action.base;
 
-import com.itsun.bos.domain.base.Standard;
-import com.itsun.bos.service.base.StandardService;
+import com.itsun.bos.domain.base.Courier;
+import com.itsun.bos.service.base.CourierService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.convention.annotation.Action;
@@ -13,30 +13,29 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 /**
- * Created by SY on 2017-07-19.
+ * Created by SY on 2017-07-21.
  * on BOSV20
- * on 上午 10:34
+ * on 下午 01:43
  */
-@ParentPackage("struts-default")
+@ParentPackage("json-default")
 @Namespace("/")
 @Controller
 @Scope("prototype")
-public class standardSave extends ActionSupport implements ModelDriven<Standard> {
-    private Standard standard = new Standard();
+public class CourierAction extends ActionSupport implements ModelDriven<Courier> {
+
+    private Courier courier = new Courier();
+
     @Autowired
-    private StandardService standardService;
+    private CourierService courierService;
+
     @Override
-    public Standard getModel() {
-        return standard;
-    }
-    @Action(value = "standard_save",results = {@Result(type = "redirect",location = "/pages/base/standard.html")})
-    public String savdStandard(){
-        standardService.save(standard);
-        return  SUCCESS;
+    public Courier getModel() {
+        return courier;
     }
 
-    public String  findData(){
-
+    @Action(value = "courier_save", results = {@Result(type = "redirect", location = "./pages/base/courier.html")})
+    public String save_courier() {
+        courierService.save(courier);
         return SUCCESS;
     }
 }
