@@ -156,9 +156,17 @@
 			        height: 400,
 			        resizable:false
 			    });
+                $('#safetied').click(function () {
+                    if ($("#aleatory").form("validate")) {
+                        $("#aleatory").submit();
+                    } else {
+                        $.messager.alert("提示信息", "含有非法字段,请检查提交内容", 'warning');
+                    }
+                });
 				$("#btn").click(function(){
 					alert("执行查询...");
 				});
+
 				
 			});
 		
@@ -334,15 +342,15 @@
 		<div class="easyui-window" title="定区添加修改" id="addWindow" collapsible="false" minimizable="false" maximizable="false" style="top:20px;left:200px">
 			<div style="height:31px;overflow:hidden;" split="false" border="false">
 				<div class="datagrid-toolbar">
-					<a id="save" icon="icon-save" href="#" class="easyui-linkbutton" plain="true">保存</a>
+                    <a id="safetied" icon="icon-save" href="#" class="easyui-linkbutton" plain="true">保存</a>
 				</div>
 			</div>
 
 			<div style="overflow:auto;padding:5px;" border="false">
-				<form>
+                <form id="aleatory" action="../../fixedAreaForm_save.action">
 					<table class="table-edit" width="80%" align="center">
 						<tr class="title">
-							<td colspan="2">定区信息</td>
+                            <td colspan="2"></td>
 						</tr>
 						<tr>
 							<td>定区编码</td>

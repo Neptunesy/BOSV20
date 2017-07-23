@@ -59,7 +59,7 @@ public class StandardAction extends ActionSupport implements ModelDriven<Standar
         this.rows = rows;
     }
 
-    @Action(value = "pageQuery", results = {@Result(name = "success", type = "json")})
+    @Action(value = "pageQuery", results = {@Result(type = "json")})
     public String pageQuery() {
         Pageable pageable = new PageRequest(page - 1, rows);
         Page<Standard> standardPage = standardService.findAll(pageable);
@@ -72,11 +72,12 @@ public class StandardAction extends ActionSupport implements ModelDriven<Standar
         return SUCCESS;
     }
 
-    @Action(value = "standard_findAll", results = {@Result(name = "success", type = "json")})
+    @Action(value = "standard_findAll", results = {@Result(type = "json")})
     public String standard_findAll() {
         List<Standard> standardList = standardService.findAll();
         ActionContext.getContext().getValueStack().push(standardList);
         return SUCCESS;
     }
+
 
 }

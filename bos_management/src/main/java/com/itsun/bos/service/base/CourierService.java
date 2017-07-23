@@ -1,6 +1,9 @@
 package com.itsun.bos.service.base;
 
 import com.itsun.bos.domain.base.Courier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 
 /**
  * Created by SY on 2017-07-21.
@@ -10,4 +13,8 @@ import com.itsun.bos.domain.base.Courier;
 public interface CourierService {
 
     void save(Courier courier);
+
+    Page<Courier> findPageDate(Specification specification, Pageable pageable);
+
+    void delBetch(String[] ids);
 }
