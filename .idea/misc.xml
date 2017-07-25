@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://D:/黑马程序员就业班/框架/课件/bosv2.0_chapter04_CXF WebService 远程调用/代码/cxf演示代码/cxf_rs_spring" />
     <file type="web" url="file://$PROJECT_DIR$/bos_management" />
+    <file type="web" url="file://$PROJECT_DIR$/crm_management" />
   </component>
   <component name="IdProvider" IDEtalkID="BAD5ABD5D7617B631314DD1A89FC0CA8" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/common_parent/pom.xml" />
         <option value="$PROJECT_DIR$/bos_management/pom.xml" />
+        <option value="$PROJECT_DIR$/common_parent/pom.xml" />
+        <option value="$PROJECT_DIR$/crm_domain/pom.xml" />
+        <option value="$PROJECT_DIR$/crm_management/pom.xml" />
       </list>
     </option>
   </component>

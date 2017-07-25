@@ -4,6 +4,9 @@ import com.itsun.bos.dao.base.FixedAreaRespository;
 import com.itsun.bos.domain.base.FixedArea;
 import com.itsun.bos.service.base.FixedAreaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,5 +22,10 @@ public class FixedAreaServiceImpl implements FixedAreaService {
     @Override
     public void save(FixedArea model) {
         fixedAreaRespository.save(model);
+    }
+
+    @Override
+    public Page<FixedArea> findAllByPage(Specification<FixedArea> specification, Pageable pageable) {
+        return fixedAreaRespository.findAll(specification, pageable);
     }
 }

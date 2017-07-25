@@ -8,12 +8,18 @@
         <outputRelativeToContentRoot value="true" />
         <module name="bos_management" />
         <module name="BOSV20" />
+        <module name="crm_domain" />
+        <module name="crm_management" />
+        <module name="crm_parent" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bos_management" target="1.8" />
       <module name="BOSV20" target="1.5" />
       <module name="common_parent" target="1.5" />
+      <module name="crm_domain" target="1.8" />
+      <module name="crm_management" target="1.8" />
+      <module name="cxf_rs_spring" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@192.168.110.128" uuid="4e58526e-6435-4f60-a3fc-3831c73a9f8d">
+    <data-source source="LOCAL" name="bos_management" uuid="4e58526e-6435-4f60-a3fc-3831c73a9f8d">
       <driver-ref>oracle</driver-ref>
       <synchronize>true</synchronize>
       <auto-commit>false</auto-commit>
       <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
       <jdbc-url>jdbc:oracle:thin:@192.168.110.128:1521:orcl</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="crm_manganed" uuid="a6bbbc47-8099-4204-8edc-78ec6b26236b">
+      <driver-ref>oracle</driver-ref>
+      <synchronize>true</synchronize>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@192.168.110.128:1521:ORCl</jdbc-url>
+      <driver-properties>
+        <property name="v$session.program" value="DataGrip" />
+      </driver-properties>
     </data-source>
   </component>
 </project>

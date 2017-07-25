@@ -130,7 +130,7 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
                                 Predicate predicate;
                                 //字符串使用like方法
                                 if (TypeUtils.isString(value)) {
-                                    predicate = cb.like(root.get(name).as(propertyType), "%" + value + "%");
+                                    predicate = cb.like(root.get(name).as(propertyType), value + "%");
                                 } else {
                                     //数字字符布尔使用equal方法
                                     predicate = cb.equal(root.get(name).as(propertyType), value);
