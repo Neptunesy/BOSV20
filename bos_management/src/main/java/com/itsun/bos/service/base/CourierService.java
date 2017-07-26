@@ -5,6 +5,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
+import java.util.List;
+
 /**
  * Created by SY on 2017-07-21.
  * on BOSV20
@@ -17,4 +19,6 @@ public interface CourierService {
     Page<Courier> findPageDate(Specification specification, Pageable pageable);
 
     void delBetch(String[] ids);
+
+    List<Courier> findNoassociation();
 }

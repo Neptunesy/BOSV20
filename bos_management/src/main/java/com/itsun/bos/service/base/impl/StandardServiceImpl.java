@@ -17,7 +17,7 @@ import java.util.List;
  * on 下午 07:16
  */
 @Service
-
+@Transactional
 public class StandardServiceImpl implements StandardService {
 
 

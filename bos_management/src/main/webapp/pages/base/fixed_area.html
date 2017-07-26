@@ -116,9 +116,11 @@
 						// 只选择了一个定区
 						// 弹出定区关联快递员 窗口 
 						$("#courierWindow").window('open');
+
+                        $('#courierFixedAreaId').val(rows[0].id);
 					}else{
 						// 没有选中定区，或者选择 了多个定区
-						$.messager.alert("警告","关联快递员,只能（必须）选择一个定区","warning");
+                        $.messager.alert("警告", "关联快递员,必须选择一个定区", "warning");
 					}
 				}
 			}];
@@ -226,6 +228,15 @@
 //                    选中所有已选中的选项
                     $('#associationSelect option').attr('selected', 'selected');
                     $('#customerForm').submit();
+                })
+
+//				为关联快递员绑定事件
+                $("#associationCourierBtn").click(function () {
+                    if ($('#courierForm').form('validate')) {
+                        $('#courierForm').submit();
+                    } else {
+                        $.messager.alert('警告', "您未选择要关联的快递员或取派时间", 'warning');
+                    }
                 })
             });
 		
@@ -523,19 +534,24 @@
 					<table class="table-edit" width="80%" align="center">
 						<tr class="title">
 							<td colspan="2">关联快递员</td>
-						</tr> 
+						</tr>
+                        </tr>
 						<tr>
 							<td>选择快递员</td>
 							<td>
 								<!-- 存放定区编号 -->
 								<input type="hidden" name="id" id="courierFixedAreaId" />
-								<input type="text" name="courierId" class="easyui-combobox" required="true" />
+                                <input type="text" name="courierId" class="easyui-combobox" required="true"
+                                       data-options="url:'../../courier_findnoassociation.action',
+										valueField:'id',textField:'info'"/>
 							</td>
 						</tr>
 						<tr>
 							<td>选择收派时间</td>
 							<td>
-								<input type="text" name="takeTimeId" class="easyui-combobox" required="true" />
+                                <input type="text" name="taketimeId" class="easyui-combobox" required="true"
+                                       data-options="url:'../../taketime_findAll.action',
+										valueField:'id',textField:'name'"/>
 							</td>
 						</tr>
 						<tr>

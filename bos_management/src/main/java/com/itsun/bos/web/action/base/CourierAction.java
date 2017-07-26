@@ -113,7 +113,13 @@ public class CourierAction extends ActionSupport implements ModelDriven<Courier>
         }
     }
 
+    @Action(value = "courier_findnoassociation", results = {@Result(type = "json")})
+    public String findnoassociation() {
 
+        List<Courier> couriers = courierService.findNoassociation();
+        ActionContext.getContext().getValueStack().push(couriers);
+        return SUCCESS;
+    }
 
 
 }

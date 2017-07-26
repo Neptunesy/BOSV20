@@ -10,12 +10,20 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.util.List;
+import java.util.Set;
+
 /**
  * Created by SY on 2017-07-21.
  * on BOSV20
  * on 下午 06:23
  */
 @Service
+@Transactional
 public class CourierServiceImpl implements CourierService {
     @Autowired
     private CourierRepository courierRepository;
@@ -37,4 +45,18 @@ public class CourierServiceImpl implements CourierService {
             courierRepository.updateBetch(id);
         }
     }
+
+    @Override
+    public List<Courier> findNoassociation() {
+        Specification specification = new Specification() {
+            @Override
+            public Predicate toPredicate(Root root, CriteriaQuery query, CriteriaBuilder cb) {
+                Predicate predicate = cb.isEmpty(root.get("fixedAreas").as(Set.class));
+                return predicate;
+            }
+        };
+        return courierRepository.findAll(specification);
+    }
+
+
 }

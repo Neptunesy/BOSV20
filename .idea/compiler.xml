@@ -14,6 +14,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="bos_fore" target="1.8" />
       <module name="bos_management" target="1.8" />
       <module name="BOSV20" target="1.5" />
       <module name="common_parent" target="1.5" />

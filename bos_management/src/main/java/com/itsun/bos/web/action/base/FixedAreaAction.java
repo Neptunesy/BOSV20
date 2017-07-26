@@ -90,5 +90,23 @@ public class FixedAreaAction extends BaseAction<FixedArea> {
         return SUCCESS;
     }
 
+    private Integer courierId;
+    private Integer taketimeId;
+
+    public void setCourierId(Integer courierId) {
+        this.courierId = courierId;
+    }
+
+    public void setTaketimeId(Integer taketimeId) {
+        this.taketimeId = taketimeId;
+    }
+
+    @Action(value = "fixedArea_associationCourierToFixedArea", results = {@Result(type = "redirect", location = "/pages/base/fixed_area.html")})
+    public String fixedArea_associationCourierToFixedArea() {
+
+        fixedAreaService.associationCourierToFixedArea(model, courierId, taketimeId);
+
+        return SUCCESS;
+    }
 }
 

@@ -57,7 +57,6 @@
         <property name="persistenceProvider">
             <bean class="org.hibernate.ejb.HibernatePersistence"></bean>
         </property>
-
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
@@ -65,6 +64,7 @@
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>
+
     </bean>
 
     <jpa:repositories base-package="com.itsun.crm.dao" transaction-manager-ref="transactionManager"
