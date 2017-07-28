@@ -33,4 +33,21 @@ public interface CustomerService {
             @QueryParam("customerStrId") String customerStrId,
             @QueryParam("fixedAreaID") String fixedAreaID
     );
+
+    @Path("/saveCustomer")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    void saveCustomers(Customer model);
+
+    @Path("/activeCustomer/{telephone}")
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    void activeMail(
+            @PathParam("telephone") String telephone);
+
+    @Path("/findCustomerByTelephone/{telephone}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    Customer findCustomerByTelephone(
+            @PathParam("telephone") String telephone);
 }
