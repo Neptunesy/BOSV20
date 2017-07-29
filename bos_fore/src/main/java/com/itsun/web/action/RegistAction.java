@@ -11,10 +11,17 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Controller;
 
+import javax.jms.JMSException;
+import javax.jms.MapMessage;
+import javax.jms.Message;
+import javax.jms.Session;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -29,6 +36,10 @@ import java.util.concurrent.TimeUnit;
 @Scope("prototype")
 @ParentPackage("json-default")
 public class RegistAction extends BaseAction<Customer> {
+
+    @Autowired
+    @Qualifier("jmsQueueTemplate")
+    private JmsTemplate jmsTemplate;
 
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
@@ -60,7 +71,17 @@ public class RegistAction extends BaseAction<Customer> {
                     "\">邮箱绑定地址</a>\n" +
                     "</span>";
 
-            MailUtils.sendMail("速运快递的激活邮件", content, model.getEmail());
+            //MailUtils.sendMail("速运快递的激活邮件", content, model.getEmail());
+
+            jmsTemplate.send("bos_email", new MessageCreator() {
+                @Override
+                public Message createMessage(Session session) throws JMSException {
+                    MapMessage mapMessage = session.createMapMessage();
+                    mapMessage.setString("email", model.getEmail());
+                    mapMessage.setString("content", content);
+                    return mapMessage;
+                }
+            });
 
             return SUCCESS;
 
