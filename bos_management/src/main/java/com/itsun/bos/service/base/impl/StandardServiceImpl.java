@@ -1,8 +1,9 @@
 package com.itsun.bos.service.base.impl;
 
 import com.itsun.bos.dao.base.StandardRespository;
-import com.itsun.bos.domain.base.Standard;
+import com.itsun.bos.domain.Standard;
 import com.itsun.bos.service.base.StandardService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

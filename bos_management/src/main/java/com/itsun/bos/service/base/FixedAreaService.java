@@ -1,6 +1,6 @@
 package com.itsun.bos.service.base;
 
-import com.itsun.bos.domain.base.FixedArea;
+import com.itsun.bos.domain.FixedArea;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;

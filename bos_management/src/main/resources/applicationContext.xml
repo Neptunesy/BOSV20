@@ -67,4 +67,6 @@
 
     <!-- 整合spring data jpa -->
     <jpa:repositories base-package="com.itsun.bos.dao"/>
+
+    <import resource="applicationContext-webService.xml"/>
 </beans>

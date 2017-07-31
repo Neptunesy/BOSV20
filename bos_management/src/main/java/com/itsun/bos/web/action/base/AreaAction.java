@@ -1,8 +1,9 @@
 package com.itsun.bos.web.action.base;
 
-import com.itsun.bos.domain.base.Area;
+import com.itsun.bos.domain.Area;
 import com.itsun.bos.service.base.AreaService;
 import com.itsun.bos.utils.PinYin4jUtils;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;

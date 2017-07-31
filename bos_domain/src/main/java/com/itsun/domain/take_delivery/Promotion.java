@@ -1,22 +1,18 @@
-package com.itsun.bos.domain.base.take_delivery;
+package com.itsun.domain.take_delivery;
 
+import com.itsun.domain.comman.Constant;
+
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-
 
 /**
  * @description:促销信息实体类
  */
 @Entity
 @Table(name = "T_PROMOTION")
-@XmlRootElement(name = "promotion")
+@XmlRootElement(name = "Promotion")
 public class Promotion implements Serializable {
 
     @Id
@@ -60,6 +56,13 @@ public class Promotion implements Serializable {
         this.title = title;
     }
 
+    public String getTitleImg() {
+        return titleImg;
+    }
+
+    public void setTitleImg(String titleImg) {
+        this.titleImg = titleImg;
+    }
 
     public String getActiveScope() {
         return activeScope;
@@ -115,6 +118,10 @@ public class Promotion implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void setDescription(String description) {

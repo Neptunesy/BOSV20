@@ -1,8 +1,8 @@
 package com.itsun.bos.service.base.impl;
 
 import com.itsun.bos.dao.base.AreaRepository;
-import com.itsun.bos.domain.base.Area;
 import com.itsun.bos.service.base.AreaService;
+import com.itsun.bos.domain.Area;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

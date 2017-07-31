@@ -1,6 +1,6 @@
 package com.itsun.bos.web.action.base;
 
-import com.itsun.bos.domain.base.Courier;
+import com.itsun.bos.domain.Courier;
 import com.itsun.bos.service.base.CourierService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;

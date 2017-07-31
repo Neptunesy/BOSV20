@@ -1,7 +1,8 @@
 package com.itsun.bos.service.base.impl;
 
 import com.itsun.bos.dao.base.StandardRespository;
-import com.itsun.bos.domain.base.Standard;
+
+import com.itsun.bos.domain.Standard;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -43,6 +43,7 @@
 
                 $('#save').click(function () {
                     if ($('#promotionForm').form('validate')) {
+                        window.editor.sync();
                         $('#promotionForm').submit();
                     } else {
                         $.messager.alert('警告', '表单中含有非法字段', 'warning');
@@ -60,7 +61,8 @@
 			</div>
 		</div>
 		<div region="center" style="overflow:auto;padding:5px;" border="false">
-			<form id="promotionForm" method="post" enctype="multipart/form-data" action="../../promotionForm">
+            <form id="promotionForm" method="post" enctype="multipart/form-data"
+                  action="../../promotionform_save.action">
 				<table class="table-edit" width="95%" align="center">
 					<tr class="title">
 						<td colspan="4">宣传任务</td>

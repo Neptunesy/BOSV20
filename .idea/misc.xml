@@ -18,11 +18,15 @@
         <option value="$PROJECT_DIR$/crm_management/pom.xml" />
         <option value="$PROJECT_DIR$/bos_fore/pom.xml" />
         <option value="$PROJECT_DIR$/bos_sms/pom.xml" />
+        <option value="$PROJECT_DIR$/bos_domain/pom.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="RSProjectComponent">
+    <option name="myShowAllResources" value="true" />
   </component>
   <component name="WebServicesPlugin" addRequiredLibraries="true" />
 </project>

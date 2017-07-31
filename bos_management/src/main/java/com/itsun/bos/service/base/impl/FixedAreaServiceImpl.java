@@ -3,10 +3,11 @@ package com.itsun.bos.service.base.impl;
 import com.itsun.bos.dao.base.CourierRepository;
 import com.itsun.bos.dao.base.FixedAreaRespository;
 import com.itsun.bos.dao.base.TakeTimeRepository;
-import com.itsun.bos.domain.base.Courier;
-import com.itsun.bos.domain.base.FixedArea;
-import com.itsun.bos.domain.base.TakeTime;
+import com.itsun.bos.domain.Courier;
+import com.itsun.bos.domain.FixedArea;
+import com.itsun.bos.domain.TakeTime;
 import com.itsun.bos.service.base.FixedAreaService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

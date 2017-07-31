@@ -1,6 +1,6 @@
 package com.itsun.bos.web.action.base;
 
-import com.itsun.bos.domain.base.TakeTime;
+import com.itsun.bos.domain.TakeTime;
 import com.itsun.bos.service.base.TakeTimeService;
 import com.itsun.bos.web.action.base.comman.BaseAction;
 import com.opensymphony.xwork2.ActionContext;

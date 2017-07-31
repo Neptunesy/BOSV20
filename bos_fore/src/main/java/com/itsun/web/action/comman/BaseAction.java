@@ -1,5 +1,9 @@
 package com.itsun.web.action.comman;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.Map;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -7,10 +11,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by SY on 2017-07-23.
@@ -18,7 +18,6 @@ import java.util.Map;
  * on 上午 08:51
  */
 public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
-
     protected T model;
 
     @Override
@@ -49,10 +48,10 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
 
     }
 
-    private Integer page;
-    private Integer rows;
+    protected Integer page;
+    protected Integer rows;
 
-    private Pageable pageable;
+    protected Pageable pageable;
 
     public void setPage(int page) {
         this.page = page;

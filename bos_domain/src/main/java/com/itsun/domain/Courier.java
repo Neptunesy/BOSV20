@@ -1,11 +1,8 @@
-package com.itsun.bos.domain.base;
-
-import org.apache.struts2.json.annotations.JSON;
-
-import java.util.HashSet;
-import java.util.Set;
+package com.itsun.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @description:快递员

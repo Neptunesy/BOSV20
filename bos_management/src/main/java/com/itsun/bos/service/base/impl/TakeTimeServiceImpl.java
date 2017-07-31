@@ -1,8 +1,9 @@
 package com.itsun.bos.service.base.impl;
 
 import com.itsun.bos.dao.base.TakeTimeRepository;
-import com.itsun.bos.domain.base.TakeTime;
+import com.itsun.bos.domain.TakeTime;
 import com.itsun.bos.service.base.TakeTimeService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
