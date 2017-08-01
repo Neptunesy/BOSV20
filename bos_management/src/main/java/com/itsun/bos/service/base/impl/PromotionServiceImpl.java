@@ -1,8 +1,8 @@
 package com.itsun.bos.service.base.impl;
 
 import com.itsun.bos.dao.base.PromotionResposlity;
-import com.itsun.bos.domain.PageBean;
-import com.itsun.bos.domain.take_delivery.Promotion;
+import com.itsun.domain.PageBean;
+import com.itsun.domain.take_delivery.Promotion;
 import com.itsun.bos.service.base.PromotionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +43,10 @@ public class PromotionServiceImpl implements PromotionService {
         promotionPageBean.setTotalCount(all.getTotalElements());
         promotionPageBean.setPageDate(all.getContent());
         return promotionPageBean;
+    }
+
+    @Override
+    public Promotion findByid(Integer id) {
+        return promotionResposlity.findOne(id);
     }
 }

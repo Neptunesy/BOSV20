@@ -1,6 +1,6 @@
 package com.itsun.bos.web.action.take_delivery;
 
-import com.itsun.bos.domain.take_delivery.Promotion;
+import com.itsun.domain.take_delivery.Promotion;
 import com.itsun.bos.service.base.PromotionService;
 import com.itsun.bos.utils.UUIDUtils;
 import com.itsun.bos.web.action.base.comman.BaseAction;

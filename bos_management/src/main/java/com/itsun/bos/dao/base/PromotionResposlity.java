@@ -1,6 +1,6 @@
 package com.itsun.bos.dao.base;
 
-import com.itsun.bos.domain.take_delivery.Promotion;
+import com.itsun.domain.take_delivery.Promotion;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

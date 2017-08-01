@@ -7,10 +7,16 @@
         http://activemq.apache.org/schema/core/activemq-core-5.8.0.xsd">
 
 
-    <amq:connectionFactory id="appConnectionFactory" brokerURL="tcp://localhost:61616" userName="admin"
-                           password="admin">
+    <!--<amq:connectionFactory id="appConnectionFactory" brokerURL="tcp://localhost:61616" userName="admin"-->
+    <!--password="admin">-->
 
-    </amq:connectionFactory>
+
+    <!--</amq:connectionFactory>-->
+    <bean id="appConnectionFactory" class="org.apache.activemq.spring.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61616"></property>
+        <property name="userName" value="admin"></property>
+        <property name="password" value="admin"></property>
+    </bean>
     <bean id="mqConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
         <property name="targetConnectionFactory" ref="appConnectionFactory"/>
         <property name="sessionCacheSize" value="100"/>

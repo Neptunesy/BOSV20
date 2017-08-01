@@ -6,5 +6,5 @@ package com.itsun.bos.commoan;
  * on 08:58
  */
 public class Constant {
-    public static final String BOS_MANAGEMENT_URL = "http://localhost:8077/bos_mangement/";
+    public static final String BOS_MANAGEMENT_URL = "http://localhost:8077/";
 }

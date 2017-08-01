@@ -1,15 +1,12 @@
 package com.itsun.bos.service.base;
 
 
-import com.itsun.bos.domain.PageBean;
-import com.itsun.bos.domain.take_delivery.Promotion;
+import com.itsun.domain.PageBean;
+import com.itsun.domain.take_delivery.Promotion;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -28,4 +25,9 @@ public interface PromotionService {
     @Produces(MediaType.APPLICATION_JSON)
     PageBean<Promotion> findPageData(@QueryParam("page") int page,
                                      @QueryParam("rows") int rows);
+
+    @Path("/promotion/{id}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    Promotion findByid(@PathParam("id") Integer id);
 }

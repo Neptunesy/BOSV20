@@ -1,6 +1,6 @@
 package com.itsun.bos.dao.base;
 
-import com.itsun.bos.domain.FixedArea;
+import com.itsun.domain.FixedArea;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

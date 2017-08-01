@@ -1,6 +1,6 @@
 package com.itsun.bos.web.action.base;
 
-import com.itsun.bos.domain.FixedArea;
+import com.itsun.domain.FixedArea;
 import com.itsun.bos.service.base.FixedAreaService;
 import com.itsun.bos.web.action.base.comman.BaseAction;
 import com.itsun.crm.domain.Customer;

@@ -1,6 +1,6 @@
 package com.itsun.bos.web.action.base;
 
-import com.itsun.bos.domain.Area;
+import com.itsun.domain.Area;
 import com.itsun.bos.service.base.AreaService;
 import com.itsun.bos.utils.PinYin4jUtils;
 

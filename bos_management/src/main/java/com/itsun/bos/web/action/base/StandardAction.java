@@ -2,7 +2,7 @@ package com.itsun.bos.web.action.base;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.itsun.bos.domain.Standard;
+import com.itsun.domain.Standard;
 import com.itsun.bos.service.base.StandardService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
