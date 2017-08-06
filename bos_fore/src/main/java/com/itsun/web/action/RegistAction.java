@@ -1,6 +1,7 @@
 package com.itsun.web.action;
 
 import com.itsun.crm.domain.Customer;
+import com.itsun.domain.comman.Constant;
 import com.itsun.utils.MailUtils;
 import com.itsun.web.action.comman.BaseAction;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -59,7 +60,7 @@ public class RegistAction extends BaseAction<Customer> {
             return INPUT;
         } else {
 
-            WebClient.create("http://localhost:8078/services/customerService/saveCustomer").type(MediaType.APPLICATION_JSON).post(model);
+            WebClient.create(Constant.CRM_MANAGEMENT_URL + "services/customerService/saveCustomer").type(MediaType.APPLICATION_JSON).post(model);
             System.out.println("注册成功");
 
             String emailCheckCode = RandomStringUtils.randomNumeric(32);
@@ -107,10 +108,10 @@ public class RegistAction extends BaseAction<Customer> {
             ServletActionContext.getResponse().getWriter().write("验证码错误或者已过期");
         } else {
             //调用WebService来判断用户的激活状态
-            Customer customer = WebClient.create("http://localhost:8078/services/customerService/findCustomerByTelephone/" + model.getTelephone()).accept(MediaType.APPLICATION_JSON).get(Customer.class);
+            Customer customer = WebClient.create(Constant.CRM_MANAGEMENT_URL + "services/customerService/findCustomerByTelephone/" + model.getTelephone()).accept(MediaType.APPLICATION_JSON).get(Customer.class);
             if (customer.getType() == null || customer.getType() != 1) {
                 //该用户没有绑定 调用Crm_manganent的服务对其状态进行修改
-                WebClient.create("http://localhost:8078/services/customerService/activeCustomer/" + model.getTelephone()).type(MediaType.APPLICATION_JSON).put(null);
+                WebClient.create(Constant.CRM_MANAGEMENT_URL + "services/customerService/activeCustomer/" + model.getTelephone()).type(MediaType.APPLICATION_JSON).put(null);
                 ServletActionContext.getResponse().getWriter().write("激活成功！请前去主页登陆!，5秒后跳转到登陆页面");
                 ServletActionContext.getResponse().setHeader("Refresh", "5;URL=/bos_fore/login.html");
             } else {

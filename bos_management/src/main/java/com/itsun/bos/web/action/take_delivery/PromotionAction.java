@@ -63,6 +63,7 @@ public class PromotionAction extends BaseAction<Promotion> {
     public String pageQuery() {
         Pageable pageable = this.getPageable();
         Page<Promotion> promotions = promotionService.findAll(pageable);
+
         this.encapsulationObject(promotions);
         return SUCCESS;
     }

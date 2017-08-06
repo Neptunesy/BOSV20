@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 /**
  * Created by SY on 2017-07-30.
  * on BOSV20
@@ -48,5 +50,10 @@ public class PromotionServiceImpl implements PromotionService {
     @Override
     public Promotion findByid(Integer id) {
         return promotionResposlity.findOne(id);
+    }
+
+    @Override
+    public void updateStatus(Date now) {
+        promotionResposlity.updateStatus(now);
     }
 }

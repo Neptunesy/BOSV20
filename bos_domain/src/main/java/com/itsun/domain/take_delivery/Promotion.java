@@ -59,7 +59,7 @@ public class Promotion implements Serializable {
     public String getTitleImg() {
         if (titleImg.startsWith("http"))
             return titleImg;
-        else return Constant.BOS_MANAGEMENT_URL + titleImg;
+        else return Constant.BOS_MANAGEMENT_HOST + titleImg;
     }
 
     public void setTitleImg(String titleImg) {
@@ -123,10 +123,10 @@ public class Promotion implements Serializable {
     }
 
     public String getDescription() {
-        if (description.contains(Constant.BOS_MANAGEMENT_URL)) {
+        if (description.contains(Constant.BOS_MANAGEMENT_HOST)) {
             return description;
         } else {
-            return description.replace("src=\"", "src=\"" + Constant.BOS_MANAGEMENT_URL);
+            return description.replace("src=\"", "src=\"" + Constant.BOS_MANAGEMENT_HOST);
         }
     }
 

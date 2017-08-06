@@ -26,12 +26,12 @@ bosfore_app.controller("ctrlRead", ['$scope', '$http', function ($scope, $http) 
             method: 'GET',
             url: 'promotion_pageQuery.action',
             params: {
-                "page": page,
-                "rows": $scope.pageSize
+                "page": page, // 当前页码
+                "rows": $scope.pageSize // 每页记录数
             }
         }).success(function (data, status, headers, config) {
             // 显示表格数据
-            $scope.pageItems = data.pageDate;
+            $scope.pageItems = data.pageData;
             // 计算总页数
             $scope.totalCount = data.totalCount;
             $scope.totalPages = Math.ceil($scope.totalCount / $scope.pageSize);

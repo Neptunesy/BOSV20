@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import javax.ws.rs.QueryParam;
 import java.util.List;
 
 /**
@@ -52,4 +53,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     void updateActive(String telephone);
 
     Customer findByTelephone(String telephone);
+
+    Customer findByTelephoneAndPassword(String telephone, String password);
+
+    @Query("select fixedAreaId from Customer where  address = ?1")
+    String findFixedAreaIdByAddress(String address);
 }

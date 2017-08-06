@@ -6,21 +6,19 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.scheduling.quartz.AdaptableJobFactory;
 import org.springframework.stereotype.Service;
 
-/**
- * Created by SY on 2017-08-01.
- * on BOSV20
- * on 21:10
- */
-@Service
+@Service("jobFactory")
 public class JobFactory extends AdaptableJobFactory {
 
     @Autowired
-    private AutowireCapableBeanFactory autowireCapableBeanFactory;
+    private AutowireCapableBeanFactory capableBeanFactory;
 
     @Override
-    protected Object createJobInstance(TriggerFiredBundle bundle) throws Exception {
-        Object jobInstance  = super.createJobInstance(bundle);
-        autowireCapableBeanFactory.autowireBean(jobInstance);
+    protected Object createJobInstance(TriggerFiredBundle bundle)
+            throws Exception {
+        Object jobInstance = super.createJobInstance(bundle);
+        capableBeanFactory.autowireBean(jobInstance);
         return jobInstance;
     }
+
 }
+

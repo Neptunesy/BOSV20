@@ -34,13 +34,24 @@ import java.util.Map;
 @Controller
 public class PromotionAction extends BaseAction<Promotion> {
 
+    /**
+     * Page query string.
+     *
+     * @return the string
+     */
     @Action(value = "promotion_pageQuery", results = {@Result(type = "json")})
     public String pageQuery() {
-        PageBean<Promotion> pageBean = WebClient.create("http://localhost:8077/bos_mangement/services/promotionService/pageQuery?page=" + page + "&rows=" + rows).accept(MediaType.APPLICATION_JSON_TYPE).get(PageBean.class);
+        PageBean<Promotion> pageBean = WebClient.create(Constant.BOS_MANAGEMENT_URL + "services/promotionService/pageQuery?page=" + page + "&rows=" + rows).accept(MediaType.APPLICATION_JSON_TYPE).get(PageBean.class);
         ServletActionContext.getContext().getValueStack().push(pageBean);
         return SUCCESS;
     }
 
+    /**
+     * Show detil string.
+     *
+     * @return the string
+     * @throws Exception the exception
+     */
     @Action(value = "promotion_showDetail")
     public String showDetil() throws Exception {
         //先构建Id对应的Html文件
@@ -51,7 +62,7 @@ public class PromotionAction extends BaseAction<Promotion> {
             configuration.setDirectoryForTemplateLoading(new File(ServletActionContext.getServletContext().getRealPath("/WEB-INF/freemarker_templates/")));
 
             Template template = configuration.getTemplate("promotion_detail.ftl");
-            Promotion promotion = WebClient.create(Constant.BOS_MANAGEMENT_URL + "/services/promotionService/promotion/" + model.getId()).accept(MediaType.APPLICATION_JSON_TYPE).get(Promotion.class);
+            Promotion promotion = WebClient.create(Constant.BOS_MANAGEMENT_URL + "services/promotionService/promotion/" + model.getId()).accept(MediaType.APPLICATION_JSON_TYPE).get(Promotion.class);
 
             Map<String, Object> map = new HashMap<>();
             map.put("promotion", promotion);
@@ -62,4 +73,5 @@ public class PromotionAction extends BaseAction<Promotion> {
         FileUtils.copyFile(file, ServletActionContext.getResponse().getOutputStream());
         return NONE;
     }
+
 }

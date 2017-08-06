@@ -68,5 +68,24 @@
     <!-- 整合spring data jpa -->
     <jpa:repositories base-package="com.itsun.bos.dao"/>
 
-    <import resource="applicationContext-webService.xml"/>
+
+    <bean id="promotionJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="com.itsun.bos.quartz.PromotionJob"></property>
+    </bean>
+
+    <bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="promotionJob"></property>
+        <property name="cronExpression" value="0 0 0 * * ?"></property>
+    </bean>
+
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobFactory" ref="jobFactory"/>
+        <property name="triggers">
+            <list>
+                <ref bean="cronTrigger"></ref>
+            </list>
+        </property>
+    </bean>
+    <import resource="applicationContext-webService.xml"></import>
+    <import resource="applicationContext-mq.xml"/>
 </beans>

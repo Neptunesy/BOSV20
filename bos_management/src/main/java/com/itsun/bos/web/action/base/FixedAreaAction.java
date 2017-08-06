@@ -1,9 +1,10 @@
 package com.itsun.bos.web.action.base;
 
-import com.itsun.domain.FixedArea;
 import com.itsun.bos.service.base.FixedAreaService;
 import com.itsun.bos.web.action.base.comman.BaseAction;
 import com.itsun.crm.domain.Customer;
+import com.itsun.domain.FixedArea;
+import com.itsun.domain.comman.Constant;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;
 import org.apache.cxf.jaxrs.client.WebClient;
@@ -11,7 +12,6 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
@@ -59,7 +59,7 @@ public class FixedAreaAction extends BaseAction<FixedArea> {
 
     @Action(value = "fixedArea_findNoAssocationcustomers", results = {@Result(type = "json")})
     public String fixedArea_findNoAssocationcustomers() {
-        Collection<? extends Customer> collection = create("http://localhost:8080/crm_management/services/customerService/noassocationcustomers").accept(MediaType.APPLICATION_JSON_TYPE).getCollection(Customer.class);
+        Collection<? extends Customer> collection = create(Constant.CRM_MANAGEMENT_URL + "services/customerService/noassocationcustomers").accept(MediaType.APPLICATION_JSON_TYPE).getCollection(Customer.class);
         ActionContext.getContext().getValueStack().push(collection);
         return SUCCESS;
     }
@@ -68,7 +68,7 @@ public class FixedAreaAction extends BaseAction<FixedArea> {
     public String fixedArea_findHasAssocationcustomers() {
         if (model.getId() != null) {
             System.out.println(model.getId());
-            Collection<? extends Customer> collection = create("http://localhost:8080/crm_management/services/customerService/hasassocationcustomers/" + model.getId()).accept(MediaType.APPLICATION_JSON_TYPE).type(MediaType.APPLICATION_JSON).getCollection(Customer.class);
+            Collection<? extends Customer> collection = create(Constant.CRM_MANAGEMENT_URL + "services/customerService/hasassocationcustomers/" + model.getId()).accept(MediaType.APPLICATION_JSON_TYPE).type(MediaType.APPLICATION_JSON).getCollection(Customer.class);
             ActionContext.getContext().getValueStack().push(collection);
             return SUCCESS;
         }
@@ -85,7 +85,7 @@ public class FixedAreaAction extends BaseAction<FixedArea> {
     @Action(value = "decidedzone_assigncustomerstodecidedzone", results = {@Result(type = "redirect", location = "./pages/base/fixed_area.html")})
     public String decidedzone_assigncustomerstodecidedzone() {
         String customerIdStr = StringUtils.join(customerIds, ",");
-        WebClient.create("http://localhost:8080/crm_management/services/customerSer" +
+        WebClient.create(Constant.CRM_MANAGEMENT_URL + "services/customerSer" +
                 "vice/assocationcustomerstofixedarea?customerStrId=" + customerIdStr + "&fixedAreaID=" + model.getId()).put(null);
         return SUCCESS;
     }

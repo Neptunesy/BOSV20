@@ -46,6 +46,11 @@ public class CourierAction extends ActionSupport implements ModelDriven<Courier>
         return courier;
     }
 
+    /**
+     * Save courier string.
+     *
+     * @return the string
+     */
     @Action(value = "courier_save", results = {@Result(type = "redirect", location = "./pages/base/courier.html")})
     public String save_courier() {
         courierService.save(courier);
@@ -55,20 +60,40 @@ public class CourierAction extends ActionSupport implements ModelDriven<Courier>
     private int page;
     private int rows;
 
+    /**
+     * Sets page.
+     *
+     * @param page the page
+     */
     public void setPage(int page) {
         this.page = page;
     }
 
+    /**
+     * Sets rows.
+     *
+     * @param rows the rows
+     */
     public void setRows(int rows) {
         this.rows = rows;
     }
 
     private String deleteid;
 
+    /**
+     * Sets deleteid.
+     *
+     * @param deleteid the deleteid
+     */
     public void setDeleteid(String deleteid) {
         this.deleteid = deleteid;
     }
 
+    /**
+     * Courier query bypage string.
+     *
+     * @return the string
+     */
     @Action(value = "courier_queryBypage", results = {@Result(type = "json"), @Result(name = "delSuccess", type = "redirect", location = "./pages/base/courier.html")})
     public String courier_queryBypage() {
         if (deleteid == null) {
@@ -113,9 +138,13 @@ public class CourierAction extends ActionSupport implements ModelDriven<Courier>
         }
     }
 
+    /**
+     * Findnoassociation string.
+     *
+     * @return the string
+     */
     @Action(value = "courier_findnoassociation", results = {@Result(type = "json")})
     public String findnoassociation() {
-
         List<Courier> couriers = courierService.findNoassociation();
         ActionContext.getContext().getValueStack().push(couriers);
         return SUCCESS;

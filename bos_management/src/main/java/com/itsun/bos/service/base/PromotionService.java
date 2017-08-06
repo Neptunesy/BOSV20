@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Date;
 
 /**
  * Created by SY on 2017-07-30.
@@ -30,4 +31,7 @@ public interface PromotionService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     Promotion findByid(@PathParam("id") Integer id);
+
+
+    void updateStatus(Date date);
 }
