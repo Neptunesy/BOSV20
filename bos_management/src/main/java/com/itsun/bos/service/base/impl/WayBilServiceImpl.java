@@ -1,7 +1,7 @@
 package com.itsun.bos.service.base.impl;
 
 import com.itsun.bos.dao.base.WayBilRepository;
-import com.itsun.bos.dao.base.WayBillIndexRepository;
+import com.itsun.bos.elesticserach.WayBillIndexRepository;
 import com.itsun.bos.service.base.WayBilService;
 import com.itsun.domain.take_delivery.WayBill;
 import org.apache.commons.beanutils.BeanUtils;
@@ -10,8 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * Created by SY on 2017-08-04.

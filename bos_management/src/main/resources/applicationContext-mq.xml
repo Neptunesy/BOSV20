@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+
+    <!--<amq:connectionFactory id="appConnectionFactory" brokerURL="tcp://localhost:61616" userName="admin"-->
+    <!--password="admin">-->
+
+
+    <!--</amq:connectionFactory>-->
+    <bean id="appConnectionFactory" class="org.apache.activemq.spring.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61616"></property>
+        <property name="userName" value="admin"></property>
+        <property name="password" value="admin"></property>
+    </bean>
+    <bean id="mqConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+        <property name="targetConnectionFactory" ref="appConnectionFactory"/>
+        <property name="sessionCacheSize" value="100"/>
+    </bean>
+
+
+    <bean id="jmsQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="mqConnectionFactory"></property>
+        <property name="pubSubDomain" value="false"/>
+    </bean>
+
+    <bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="mqConnectionFactory"></property>
+        <property name="pubSubDomain" value="true"/>
+    </bean>
+
+
+
+</beans>

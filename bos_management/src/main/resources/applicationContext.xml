@@ -86,7 +86,8 @@
             </list>
         </property>
     </bean>
-    <import resource="applicationContext-webService.xml"></import>
+
+    <import resource="applicationContext-webService.xml"/>
     <import resource="applicationContext-mq.xml"/>
     <import resource="applicationContext-elasticsearch.xml"/>
 </beans>
