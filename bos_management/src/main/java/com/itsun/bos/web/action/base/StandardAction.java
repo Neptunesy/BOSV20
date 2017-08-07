@@ -1,7 +1,7 @@
 package com.itsun.bos.web.action.base;
 
 import com.itsun.bos.service.base.StandardService;
-import com.itsun.domain.Standard;
+import com.itsun.domain.base.Standard;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;

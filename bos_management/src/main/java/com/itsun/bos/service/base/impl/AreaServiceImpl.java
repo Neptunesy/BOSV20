@@ -2,12 +2,11 @@ package com.itsun.bos.service.base.impl;
 
 import com.itsun.bos.dao.base.AreaRepository;
 import com.itsun.bos.service.base.AreaService;
-import com.itsun.domain.Area;
+import com.itsun.domain.base.Area;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,8 +1,8 @@
 package com.itsun.domain.take_delivery;
 
 
-import com.itsun.domain.Area;
-import com.itsun.domain.Courier;
+import com.itsun.domain.base.Area;
+import com.itsun.domain.base.Courier;
 import org.apache.struts2.json.annotations.JSON;
 
 import javax.persistence.*;

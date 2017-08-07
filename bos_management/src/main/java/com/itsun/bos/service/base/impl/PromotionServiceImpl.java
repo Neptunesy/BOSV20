@@ -1,7 +1,7 @@
 package com.itsun.bos.service.base.impl;
 
 import com.itsun.bos.dao.base.PromotionResposlity;
-import com.itsun.domain.PageBean;
+import com.itsun.domain.base.PageBean;
 import com.itsun.domain.take_delivery.Promotion;
 import com.itsun.bos.service.base.PromotionService;
 

@@ -3,7 +3,7 @@ package com.itsun.bos.service.base.impl;
 import com.itsun.bos.dao.base.CourierRepository;
 import com.itsun.bos.service.base.CourierService;
 
-import com.itsun.domain.Courier;
+import com.itsun.domain.base.Courier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

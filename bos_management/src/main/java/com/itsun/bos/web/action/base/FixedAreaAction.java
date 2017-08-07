@@ -3,7 +3,7 @@ package com.itsun.bos.web.action.base;
 import com.itsun.bos.service.base.FixedAreaService;
 import com.itsun.bos.web.action.base.comman.BaseAction;
 import com.itsun.crm.domain.Customer;
-import com.itsun.domain.FixedArea;
+import com.itsun.domain.base.FixedArea;
 import com.itsun.domain.comman.Constant;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang.StringUtils;

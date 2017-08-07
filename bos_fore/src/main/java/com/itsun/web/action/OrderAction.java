@@ -1,7 +1,7 @@
 package com.itsun.web.action;
 
 import com.itsun.crm.domain.Customer;
-import com.itsun.domain.Area;
+import com.itsun.domain.base.Area;
 import com.itsun.domain.comman.Constant;
 import com.itsun.domain.take_delivery.Order;
 import com.itsun.web.action.comman.BaseAction;

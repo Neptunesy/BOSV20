@@ -88,4 +88,5 @@
     </bean>
     <import resource="applicationContext-webService.xml"></import>
     <import resource="applicationContext-mq.xml"/>
+    <import resource="applicationContext-elasticsearch.xml"/>
 </beans>

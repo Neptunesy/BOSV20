@@ -1,6 +1,6 @@
 package com.itsun.bos.dao.base;
 
-import com.itsun.domain.TakeTime;
+import com.itsun.domain.base.TakeTime;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

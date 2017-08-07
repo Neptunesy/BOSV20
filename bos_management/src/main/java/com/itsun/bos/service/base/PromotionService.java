@@ -1,7 +1,7 @@
 package com.itsun.bos.service.base;
 
 
-import com.itsun.domain.PageBean;
+import com.itsun.domain.base.PageBean;
 import com.itsun.domain.take_delivery.Promotion;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

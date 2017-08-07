@@ -1,7 +1,7 @@
 package com.itsun.bos.service.base.impl;
 
 import com.itsun.bos.dao.base.TakeTimeRepository;
-import com.itsun.domain.TakeTime;
+import com.itsun.domain.base.TakeTime;
 import com.itsun.bos.service.base.TakeTimeService;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,7 +3,7 @@ package com.itsun.bos.service.base;
 
 ;
 
-import com.itsun.domain.Standard;
+import com.itsun.domain.base.Standard;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

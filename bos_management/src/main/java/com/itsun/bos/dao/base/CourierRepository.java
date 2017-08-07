@@ -1,6 +1,6 @@
 package com.itsun.bos.dao.base;
 
-import com.itsun.domain.Courier;
+import com.itsun.domain.base.Courier;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;

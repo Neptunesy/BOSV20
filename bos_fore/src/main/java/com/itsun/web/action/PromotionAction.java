@@ -1,6 +1,6 @@
 package com.itsun.web.action;
 
-import com.itsun.domain.PageBean;
+import com.itsun.domain.base.PageBean;
 import com.itsun.domain.comman.Constant;
 import com.itsun.domain.take_delivery.Promotion;
 import com.itsun.web.action.comman.BaseAction;

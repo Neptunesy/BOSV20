@@ -1,7 +1,7 @@
 package com.itsun.bos.service.base;
 
 
-import com.itsun.domain.TakeTime;
+import com.itsun.domain.base.TakeTime;
 
 import java.util.List;
 

@@ -3,9 +3,9 @@ package com.itsun.bos.service.base.impl;
 import com.itsun.bos.dao.base.CourierRepository;
 import com.itsun.bos.dao.base.FixedAreaRespository;
 import com.itsun.bos.dao.base.TakeTimeRepository;
-import com.itsun.domain.Courier;
-import com.itsun.domain.FixedArea;
-import com.itsun.domain.TakeTime;
+import com.itsun.domain.base.Courier;
+import com.itsun.domain.base.FixedArea;
+import com.itsun.domain.base.TakeTime;
 import com.itsun.bos.service.base.FixedAreaService;
 
 import org.springframework.beans.factory.annotation.Autowired;

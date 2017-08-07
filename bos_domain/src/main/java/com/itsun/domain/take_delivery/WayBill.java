@@ -1,6 +1,10 @@
 package com.itsun.domain.take_delivery;
 
-import com.itsun.domain.Area;
+import com.itsun.domain.base.Area;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,13 +15,17 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "T_WAY_BILL")
+@Document(indexName = "bos", type = "waybil")
 public class WayBill implements Serializable {
 
     @Id
     @GeneratedValue
     @Column(name = "C_ID")
+    @org.springframework.data.annotation.Id
+    @Field(index = FieldIndex.not_analyzed, store = true, type = FieldType.Integer)
     private Integer id;
     @Column(name = "C_WAY_BILL_NUM", unique = true)
+    @Field(index = FieldIndex.not_analyzed, store = true, type = FieldType.String)
     private String wayBillNum; // 运单编号
     @OneToOne
     @JoinColumn(name = "C_ORDER_ID")
@@ -28,11 +36,14 @@ public class WayBill implements Serializable {
     @Column(name = "C_SEND_MOBILE")
     private String sendMobile;// 寄件人电话
     @Column(name = "C_SEND_COMPANY")
+    @Field(index = FieldIndex.analyzed, analyzer = "ik", searchAnalyzer = "ik", store = true, type = FieldType.String)
     private String sendCompany;// 寄件人公司
     @OneToOne
     @JoinColumn(name = "C_SEND_AREA_ID")
+    @Field(index = FieldIndex.analyzed, analyzer = "ik", searchAnalyzer = "ik", store = true, type = FieldType.String)
     private Area sendArea; // 寄件人省市区信息
     @Column(name = "C_SEND_ADDRESS")
+    @Field(index = FieldIndex.analyzed, analyzer = "ik", searchAnalyzer = "ik", store = true, type = FieldType.String)
     private String sendAddress;// 寄件人详细地址信息
 
     @Column(name = "C_REC_NAME")
@@ -40,11 +51,14 @@ public class WayBill implements Serializable {
     @Column(name = "C_REC_MOBILE")
     private String recMobile;// 收件人电话
     @Column(name = "C_REC_COMPANY")
+    @Field(index = FieldIndex.analyzed, analyzer = "ik", searchAnalyzer = "ik", store = true, type = FieldType.String)
     private String recCompany;// 收件人公司
     @OneToOne
     @JoinColumn(name = "C_REC_AREA_ID")
+    @Field(index = FieldIndex.analyzed, analyzer = "ik", searchAnalyzer = "ik", store = true, type = FieldType.String)
     private Area recArea; // 收件人省市区信息
     @Column(name = "C_REC_ADDRESS")
+    @Field(index = FieldIndex.analyzed, analyzer = "ik", searchAnalyzer = "ik", store = true, type = FieldType.String)
     private String recAddress;// 收件人详细地址信息
 
     @Column(name = "C_SEND_PRO_NUM")

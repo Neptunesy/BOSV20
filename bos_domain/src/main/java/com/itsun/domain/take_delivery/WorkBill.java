@@ -1,6 +1,6 @@
 package com.itsun.domain.take_delivery;
 
-import com.itsun.domain.Courier;
+import com.itsun.domain.base.Courier;
 
 import java.util.Date;
 

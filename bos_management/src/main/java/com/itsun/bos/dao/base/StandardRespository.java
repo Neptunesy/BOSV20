@@ -1,6 +1,6 @@
 package com.itsun.bos.dao.base;
 
-import com.itsun.domain.Standard;
+import com.itsun.domain.base.Standard;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

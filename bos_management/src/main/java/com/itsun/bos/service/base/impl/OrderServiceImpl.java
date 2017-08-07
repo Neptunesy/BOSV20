@@ -5,11 +5,10 @@ import com.itsun.bos.dao.base.FixedAreaRespository;
 import com.itsun.bos.dao.base.OrderRepository;
 import com.itsun.bos.dao.base.WorkBillRespository;
 import com.itsun.bos.service.base.OrderService;
-import com.itsun.bos.utils.UUIDUtils;
-import com.itsun.domain.Area;
-import com.itsun.domain.Courier;
-import com.itsun.domain.FixedArea;
-import com.itsun.domain.SubArea;
+import com.itsun.domain.base.Area;
+import com.itsun.domain.base.Courier;
+import com.itsun.domain.base.FixedArea;
+import com.itsun.domain.base.SubArea;
 import com.itsun.domain.comman.Constant;
 import com.itsun.domain.take_delivery.Order;
 import com.itsun.domain.take_delivery.WorkBill;
@@ -18,18 +17,13 @@ import org.apache.cxf.jaxrs.client.WebClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.jms.JMSException;
 import javax.jms.MapMessage;
-import javax.jms.Message;
-import javax.jms.Session;
 import javax.ws.rs.core.MediaType;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.UUID;
 
 /**
  * Created by SY on 2017-08-03.
