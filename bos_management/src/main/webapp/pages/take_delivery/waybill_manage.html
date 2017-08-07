@@ -16,11 +16,30 @@
 		<script type="text/javascript" src="../../js/easyui/ext/jquery.cookie.js"></script>
 		<script src="../../js/easyui/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
 		<script type="text/javascript">
-			function doSearch() {
-				$('#tt').datagrid('load', {
-					
-				});
-			}
+            $.fn.serializeJson=function(){
+                var serializeObj={};
+                var array=this.serializeArray();
+                var str=this.serialize();
+                $(array).each(function(){
+                    if(serializeObj[this.name]){
+                        if($.isArray(serializeObj[this.name])){
+                            serializeObj[this.name].push(this.value);
+                        }else{
+                            serializeObj[this.name]=[serializeObj[this.name],this.value];
+                        }
+                    }else{
+                        serializeObj[this.name]=this.value;
+                    }
+                });
+                return serializeObj;
+            };
+
+            function doSearch() {
+                alert(1123123);
+                var queryParams = $("#serachForm").serializeJson();
+
+                $('#tt').datagrid('load', queryParams);
+            }
 		</script>
 	</head>
 
@@ -28,13 +47,13 @@
 		<div id="tb">
 			<a id="save" icon="icon-edit" href="#" class="easyui-linkbutton" plain="true">修改</a>
 			<a id="cut" icon="icon-cut" href="#" class="easyui-linkbutton" plain="true">作废</a>
-			<a id="help" icon="icon-help" href="#" class="easyui-linkbutton" plain="true">任务提示</a>
-			<a id="help" icon="icon-print" href="#" class="easyui-linkbutton" plain="true">打印查询结果</a>
-			<a id="help" icon="icon-cancel" href="#" class="easyui-linkbutton" plain="true">取消</a>
-			<a id="help" icon="icon-save" href="#" class="easyui-linkbutton" plain="true">保存</a>
-			<a id="help" icon="icon-print" href="#" class="easyui-linkbutton" plain="true">打印标签</a>
-			<a id="help" icon="icon-print" href="#" class="easyui-linkbutton" plain="true">打印工作单</a>
-			
+			<a id="1" icon="icon-help" href="#" class="easyui-linkbutton" plain="true">任务提示</a>
+			<a id="he2lp" icon="icon-print" href="#" class="easyui-linkbutton" plain="true">打印查询结果</a>
+			<a id="he3lp" icon="icon-cancel" href="#" class="easyui-linkbutton" plain="true">取消</a>
+			<a id="he4lp" icon="icon-save" href="#" class="easyui-linkbutton" plain="true">保存</a>
+			<a id="he5lp" icon="icon-print" href="#" class="easyui-linkbutton" plain="true">打印标签</a>
+			<a id="he6lp" icon="icon-print" href="#" class="easyui-linkbutton" plain="true">打印工作单</a>
+			<form id="serachForm">
 			<br />
 				运单号：<input name="wayBillNum" style="line-height:26px;border:1px solid #ccc">
 				发货地：<input name="sendAddress" style="line-height:26px;border:1px solid #ccc" >
@@ -56,7 +75,8 @@
 				</select>
 				
 				<a href="javascript:void" class="easyui-linkbutton" 
-					plain="true" onclick="doSearch()">查询</a> 
+					plain="true" onclick="doSearch()">查询</a>
+			</form>
 		</div>
 		<table id="tt" class="easyui-datagrid" url="../../waybill_pageQuery.action" fit="true" toolbar="#tb"
 			   rownumbers="true" pagination="true">

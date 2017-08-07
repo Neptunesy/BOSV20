@@ -25,7 +25,7 @@
 				// 对save按钮条件 点击事件
 				$('#save').click(function() {
                     // 对form 进行校验
-                    $.post("/waybill_save.action", $("#waybillForm").serialize(), function (data) {
+                    $.post("/waybill_save.action", $("#orderForm").serialize(), function (data) {
                         // data数据格式 {success:true, msg:'xxxx'}
                         if (data.success) {
                             // 保存成功
@@ -35,7 +35,7 @@
                             });
 
                             // 重置表单
-                            $("#waybillForm").get(0).reset();
+                            $("#orderForm").get(0).reset();
                             $("input[name='order.id']").val('');
                         }
                     });
@@ -62,7 +62,6 @@
                     if ($('#wayBillNum').val() != "") {
                         $.post("../../waybil_findByWayBillNum.action", {wayBillNum: $(this).val()}, function (data) {
                             if (data.success) {
-                                alert(JSON.stringify(data));
                                 $('#orderForm').form('load', data.wayBillData);
                             }
                         });
@@ -78,7 +77,8 @@
 			<a id="save" icon="icon-save" href="#" class="easyui-linkbutton" plain="true">保存</a>
 			<a id="no" icon="icon-no" href="#" class="easyui-linkbutton" plain="true">取消</a>
 		</div>
-        <form id="orderForm">
+        <form id="orderForm"  method="post"
+              action="../../waybill_save.action">
             <div style="width:95%;margin:10px auto">
                 <div class="table-top">
                     <table class="table-edit" width="95%">

@@ -12,7 +12,7 @@ import org.springframework.data.domain.Pageable;
 public interface WayBilService {
     void save(WayBill model);
 
-    Page<WayBill> findAll(Pageable pageable);
+    Page<WayBill> findAll(WayBill wayBill, Pageable pageable);
 
     WayBill findByWayBillNum(String wayBillNum);
 }

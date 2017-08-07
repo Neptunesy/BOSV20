@@ -59,8 +59,8 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
 
     }
 
-    private Integer page;
-    private Integer rows;
+    protected Integer page;
+    protected Integer rows;
 
     private Pageable pageable;
 

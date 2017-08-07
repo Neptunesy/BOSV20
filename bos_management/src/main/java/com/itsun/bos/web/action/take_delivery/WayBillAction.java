@@ -11,7 +11,9 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 
 import java.util.HashMap;
@@ -52,8 +54,8 @@ public class WayBillAction extends BaseAction<WayBill> {
 
     @Action(value = "waybill_pageQuery", results = {@Result(type = "json")})
     public String pageQuery() {
-        Pageable pageable = this.getPageable();
-        Page<WayBill> wayBills = wayBilService.findAll(pageable);
+        Pageable pageable = new PageRequest(page - 1,rows,new Sort(new Sort.Order(Sort.Direction.DESC,"id")));
+        Page<WayBill> wayBills = wayBilService.findAll(model,pageable);
         this.encapsulationObject(wayBills);
         return SUCCESS;
     }
