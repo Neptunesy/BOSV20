@@ -35,9 +35,7 @@
             };
 
             function doSearch() {
-                alert(1123123);
                 var queryParams = $("#serachForm").serializeJson();
-
                 $('#tt').datagrid('load', queryParams);
             }
 		</script>
@@ -74,7 +72,7 @@
 					<option value="4">异常</option>
 				</select>
 				
-				<a href="javascript:void" class="easyui-linkbutton" 
+				<a href="javascript:void(0);" class="easyui-linkbutton"
 					plain="true" onclick="doSearch()">查询</a>
 			</form>
 		</div>

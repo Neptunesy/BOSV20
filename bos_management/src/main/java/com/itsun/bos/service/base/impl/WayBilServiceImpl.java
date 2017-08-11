@@ -64,8 +64,15 @@ public class WayBilServiceImpl implements WayBilService {
                 boolQueryBuilder.must(temp);
             }
             if (StringUtils.isNotBlank(wayBill.getSendAddress())){
+
                 QueryBuilder temp = new WildcardQueryBuilder("sendAddress","*"+wayBill.getSendAddress()+"*");
-                boolQueryBuilder.must(temp);
+
+                QueryBuilder tmp = new QueryStringQueryBuilder(wayBill.getSendAddress()).field("sendAddress").defaultOperator(QueryStringQueryBuilder.Operator.AND);
+
+                BoolQueryBuilder queryBuilder = new BoolQueryBuilder();
+                queryBuilder.should(temp);
+                queryBuilder.should(tmp);
+                queryBuilder.must(queryBuilder);
             }
             if (StringUtils.isNotBlank(wayBill.getRecAddress())){
                 QueryBuilder temp = new WildcardQueryBuilder("recAddress","*"+wayBill.getRecAddress()+"*");

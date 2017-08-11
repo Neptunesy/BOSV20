@@ -20,6 +20,15 @@
 				$('#save').click(function(){
 					$('#form').submit();
 				});
+
+				$.get('../../role_list_all.action',function (data) {
+					$(data).each(function () {
+						var checkbox = $('<input type="checkbox" name="roleIds" />');
+						checkbox.val(this.id);
+                        $('#roleTD').append(checkbox);
+                        $('#roleTD').append(this.name);
+                    })
+                })
 			});
 		</script>
 	</head>
@@ -94,10 +103,8 @@
 					</tr>
 					<tr>
 						<td>角色:</td>
-						<td colspan="3">
-							<input type="checkbox" name="roleIds" value="1" /> 经理
-							<input type="checkbox" name="roleIds" value="2" /> 仓库管理员
-							<input type="checkbox" name="roleIds" value="3" /> 客服人员
+						<td colspan="3" id="roleTD">
+
 						</td>
 					</tr>
 					<tr>

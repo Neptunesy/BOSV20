@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--配置ShiroFiltter的核心Filter-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+
+        <!--安全管理器-->
+        <property name="securityManager" ref="securityManager"/>
+
+        <!--未认证跳转到那个页面-->
+        <property name="loginUrl" value="/login.html"/>
+
+        <!--登陆认证页面-->
+        <property name="successUrl" value="/index.html"/>
+        <!--认证后,没有权限查看的页面URL-->
+        <property name="unauthorizedUrl" value="/unauthorized.html"/>
+
+        <property name="filterChainDefinitions">
+            <value>
+                /login.html* = anon
+                /css/** = anon
+                /js/** = anon
+                /images/** = anon
+                /user_login.action* = anon
+                /services/** = anon
+                /validatecode.jsp* = anon
+                /index.html* = authc
+                /pages/base/courier.html* = perms[courier:list]
+                /pages/base/area.html* = roles[base]
+                /** = authc
+            </value>
+        </property>
+
+    </bean>
+
+
+    <!--安全管理器-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="bosRealm"></property>
+    </bean>
+</beans>
