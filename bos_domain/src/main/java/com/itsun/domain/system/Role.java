@@ -1,7 +1,6 @@
 package com.itsun.domain.system;
 
-import org.apache.struts2.json.annotations.JSON;
-
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,12 +13,14 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.apache.struts2.json.annotations.JSON;
+
 /**
  * @description:角色
  */
 @Entity
 @Table(name = "T_ROLE")
-public class Role {
+public class Role implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name = "C_ID")
@@ -35,15 +36,11 @@ public class Role {
 	private Set<User> users = new HashSet<User>(0);
 
 	@ManyToMany
-	@JoinTable(name = "T_ROLE_PERMISSION", joinColumns = {
-			@JoinColumn(name = "C_ROLE_ID", referencedColumnName = "C_ID") }, inverseJoinColumns = {
-					@JoinColumn(name = "C_PERMISSION_ID", referencedColumnName = "C_ID") })
+	@JoinTable(name = "T_ROLE_PERMISSION", joinColumns = { @JoinColumn(name = "C_ROLE_ID", referencedColumnName = "C_ID") }, inverseJoinColumns = { @JoinColumn(name = "C_PERMISSION_ID", referencedColumnName = "C_ID") })
 	private Set<Permission> permissions = new HashSet<Permission>(0);
 
 	@ManyToMany
-	@JoinTable(name = "T_ROLE_MENU", joinColumns = {
-			@JoinColumn(name = "C_ROLE_ID", referencedColumnName = "C_ID") }, inverseJoinColumns = {
-					@JoinColumn(name = "C_MENU_ID", referencedColumnName = "C_ID") })
+	@JoinTable(name = "T_ROLE_MENU", joinColumns = { @JoinColumn(name = "C_ROLE_ID", referencedColumnName = "C_ID") }, inverseJoinColumns = { @JoinColumn(name = "C_MENU_ID", referencedColumnName = "C_ID") })
 	private Set<Menu> menus = new HashSet<Menu>(0);
 
 	public int getId() {
@@ -77,6 +74,7 @@ public class Role {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	@JSON(serialize = false)
 	public Set<User> getUsers() {
 		return users;
@@ -85,6 +83,7 @@ public class Role {
 	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
+
 	@JSON(serialize = false)
 	public Set<Permission> getPermissions() {
 		return permissions;
@@ -93,6 +92,7 @@ public class Role {
 	public void setPermissions(Set<Permission> permissions) {
 		this.permissions = permissions;
 	}
+
 	@JSON(serialize = false)
 	public Set<Menu> getMenus() {
 		return menus;

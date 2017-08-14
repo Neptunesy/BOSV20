@@ -66,4 +66,18 @@ public class UserAction extends BaseAction<User> {
         return SUCCESS;
     }
 
+    private String[] roleIds;
+
+    public void setRoleIds(String[] roleIds) {
+        this.roleIds = roleIds;
+    }
+
+    @Action(value = "user_save",results = {@Result(type = "redirect",location = "/pages/system/userlist.html")})
+    public String user_save(){
+
+        userService.save(model,roleIds);
+
+        return SUCCESS;
+    }
+
 }

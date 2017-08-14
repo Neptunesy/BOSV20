@@ -38,6 +38,45 @@
                 var queryParams = $("#serachForm").serializeJson();
                 $('#tt').datagrid('load', queryParams);
             }
+
+            $(function () {
+				$('#transitBtn').click(function () {
+					var rows = $('#tt').datagrid('getSelections');
+					if (rows.length==0){
+					    $.messager.alert('警告','请选中最少一行数据','warning');
+					    return;
+					}
+					var a = new Array();
+					for (var i = 0; i < rows.length; i++){
+
+					    if(0 == rows[i].signStatus){
+                            a.push(rows[i].id);
+                        }else {
+                            $.messager.alert('警告','请选择合理的数据','warning');
+                            $('#tt').datagrid('unselectRow',i);
+
+                            return;
+                        }
+
+					}
+					var wayBillId  = a.join(",");
+					$.post('../../transit_create.action',{wayBillIds:wayBillId},function (data) {
+						if (data.success){
+						    $.messager.show({
+								title:"操作成功",
+								msg:data.msg
+							})
+						}else {
+                            $.messager.show({
+                                title:"操作失败",
+                                msg:data.msg
+                            })
+						}
+                    })
+
+
+                })
+            })
 		</script>
 	</head>
 
@@ -51,6 +90,7 @@
 			<a id="he4lp" icon="icon-save" href="#" class="easyui-linkbutton" plain="true">保存</a>
 			<a id="he5lp" icon="icon-print" href="#" class="easyui-linkbutton" plain="true">打印标签</a>
 			<a id="he6lp" icon="icon-print" href="#" class="easyui-linkbutton" plain="true">打印工作单</a>
+			<a id="transitBtn" icon="icon-edit"class="easyui-linkbutton" href="#" plain="true">开启中转配送</a>
 			<form id="serachForm">
 			<br />
 				运单号：<input name="wayBillNum" style="line-height:26px;border:1px solid #ccc">
@@ -81,6 +121,7 @@
 			<thead>
 				<tr>
 					<th field="ck" checkbox="true"></th>
+					<th field="infomessage" width="80">运单状态</th>
 					<th field="wayBillNum" width="80">运单编号</th>
 					<th field="sendName" width="80">寄件人</th>
 					<th field="sendMobile" width="80">寄件人电话</th>

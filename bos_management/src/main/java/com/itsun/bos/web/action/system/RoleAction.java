@@ -3,6 +3,7 @@ package com.itsun.bos.web.action.system;
 import com.itsun.bos.service.system.RoleService;
 import com.itsun.bos.web.action.base.comman.BaseAction;
 import com.itsun.domain.system.Role;
+import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -39,23 +40,24 @@ public class RoleAction extends BaseAction<Role>{
     @Action(value = "role_list_all",results = {@Result(type = "json")})
     public String roleListAll(){
        List<Role> roles = roleService.findAll();
+        ActionContext.getContext().getValueStack().push(roles);
         return SUCCESS;
     }
 
     private String[] permissionIds;
-    private String treeNodes;
+    private String menuIds ;
 
     public void setPermissionIds(String[] permissionIds) {
         this.permissionIds = permissionIds;
     }
 
-    public void setTreeNodes(String treeNodes) {
-        this.treeNodes = treeNodes;
+    public void setMenuIds(String menuIds) {
+        this.menuIds = menuIds;
     }
 
     @Action(value = "role_save",results = {@Result(type = "redirect",location = "/pages/system/role.html")})
     public  String roleSave(){
-        roleService.save(model, permissionIds, treeNodes);
+        roleService.save(model, permissionIds, menuIds);
         return SUCCESS;
     }
 

@@ -29,18 +29,23 @@ public class WayBilServiceImpl implements WayBilService {
     private WayBillIndexRepository wayBillIndexRepository;
 
     @Override
-    public void save(WayBill model) {
-        WayBill one = wayBilRepository.findByWayBillNum(model.getWayBillNum());
-        if ( one == null||one.getId() == null ) {
-            wayBilRepository.save(model);
-            wayBillIndexRepository.save(model);
+    public void save(WayBill wayBill) {
+        WayBill exitWayBile = wayBilRepository.findByWayBillNum(wayBill.getWayBillNum());
+        if ( exitWayBile == null||exitWayBile.getId() == null ) {
+            wayBilRepository.saveAndFlush(wayBill);
+            wayBillIndexRepository.save(wayBill);
 
         } else {
             try {
-                Integer id = one.getId();
-                BeanUtils.copyProperties(one, model);
-                one.setId(id);
-                wayBillIndexRepository.save(one);
+                if (exitWayBile.getSignStatus()==null){
+                    Integer id = exitWayBile.getId();
+                    BeanUtils.copyProperties(exitWayBile, wayBill);
+                    exitWayBile.setId(id);
+                    wayBillIndexRepository.save(wayBill);
+
+                }else {
+                    throw new RuntimeException("运单已发出");
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 throw new RuntimeException(e.getMessage());

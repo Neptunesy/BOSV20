@@ -67,6 +67,7 @@
 					    treeNodes.push(nodes[i].id);
 					}
                     treeNodes.join(",");
+                    alert(treeNodes);
                     $('input[name="menuIds"]').val(treeNodes);
 
                     if ($('#roleForm').form('validate')){
@@ -118,7 +119,7 @@
 					<tr>
 						<td>菜单授权</td>
 						<td>
-							<input type="hidden" id="menuIds">
+							<input type="hidden" name="menuIds">
 							<ul id="menuTree" class="ztree"></ul>
 						</td>
 					</tr>

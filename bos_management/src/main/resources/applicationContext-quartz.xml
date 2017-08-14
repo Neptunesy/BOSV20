@@ -2,16 +2,31 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
- 
- 	<bean id="promotionJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
- 		<property name="jobClass" value="com.itsun.bos.utils.JobFactory" />
- 	</bean>
- 	
- 	<bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
- 		<property name="jobDetail" ref="promotionJob" />
- 		<property name="startDelay" value="0" />
- 		<property name="repeatInterval" value="60000" />
- 	</bean>
-	
+
+	<bean id="promotionJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="com.itsun.bos.quartz.PromotionJob"></property>
+	</bean>
+	<bean id="SyncWay_BillJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="com.itsun.bos.quartz.SyncWay_BillJob"></property>
+	</bean>
+
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="promotionJob"></property>
+		<property name="cronExpression" value="0 0 0 * * ?"></property>
+	</bean>
+	<bean id="cronTrigger2" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="SyncWay_BillJob"></property>
+		<property name="cronExpression" value="0 31	0,21 1/1 * ? *"></property>
+	</bean>
+
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobFactory" ref="jobFactory"/>
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger"></ref>
+				<ref bean="cronTrigger2"></ref>
+			</list>
+		</property>
+	</bean>
 
 </beans>

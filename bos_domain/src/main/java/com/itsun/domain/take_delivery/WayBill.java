@@ -1,6 +1,8 @@
 package com.itsun.domain.take_delivery;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.itsun.domain.base.Area;
+import org.apache.struts2.json.annotations.JSON;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldIndex;
@@ -195,7 +197,7 @@ public class WayBill implements Serializable {
     public void setRecCompany(String recCompany) {
         this.recCompany = recCompany;
     }
-
+    @JsonIgnore
     public Area getRecArea() {
         return recArea;
     }
@@ -314,6 +316,40 @@ public class WayBill implements Serializable {
 
     public void setDelTag(String delTag) {
         this.delTag = delTag;
+    }
+
+    private String infomessage;
+
+//    @Transient
+//    public String getInfomessage() {
+//        if (signStatus==0){
+//            infomessage = "待发货";
+//        }else if(signStatus==1){
+//            infomessage = "派送中";
+//        }else if(signStatus==2){
+//            infomessage = "已签收";
+//        }else {
+//            infomessage="异常";
+//        }
+//
+//        return infomessage;
+//    }
+
+
+    @Transient
+    public String getInfomessage(){
+        if(signStatus != null){
+            if (signStatus==0){
+                return "待发货";
+            }else if(signStatus==1){
+                return "开始配送中转";
+            }else if (signStatus==2){
+                return "已签收";
+            }else {
+                return "签收";
+            }
+        }
+        return "";
     }
 
 }

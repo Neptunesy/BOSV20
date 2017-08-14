@@ -13,4 +13,6 @@ public interface UserService {
     User findByUsername(String username);
 
     Page<User> findAll(Pageable pageable);
+
+    void save(User model, String[] roleIds);
 }

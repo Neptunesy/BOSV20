@@ -1,6 +1,7 @@
 package com.itsun.bos.service.system;
 
 import com.itsun.domain.system.Menu;
+import com.itsun.domain.system.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -17,4 +18,6 @@ public interface MenuService {
     List<Menu> findAll();
 
     void save(Menu menu);
+
+    List<Menu> findByUser(User user);
 }

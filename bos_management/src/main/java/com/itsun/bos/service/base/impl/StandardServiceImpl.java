@@ -5,6 +5,8 @@ import com.itsun.domain.base.Standard;
 import com.itsun.bos.service.base.StandardService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,7 @@ public class StandardServiceImpl implements StandardService {
     private StandardRespository standardRepository;
     @Override
     @Transactional
+    @CacheEvict(value = "standardCache",allEntries = true)
     public void save(Standard standard) {
         standardRepository.save(standard);
 
@@ -33,12 +36,14 @@ public class StandardServiceImpl implements StandardService {
 
     @Override
     @Transactional(readOnly = true)
+    @Cacheable(value = "standardCache",key = "#pageable.pageNumber+'_'+#pageable.pageSize")
     public Page<Standard> findAll(Pageable pageable) {
 
         return standardRepository.findAll(pageable);
     }
 
     @Override
+    @Cacheable(value = "standardCache")
     public List<Standard> findAll() {
         return standardRepository.findAll();
     }

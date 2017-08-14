@@ -14,7 +14,6 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ import java.util.List;
  * on BOSV20
  * on 19:28
  */
-@Service
+
 public class bosRealm extends AuthorizingRealm {
 
     @Autowired

@@ -32,7 +32,7 @@
 				};
 				
 				// 基本功能菜单加载
-				$.post("./menu_listAll.action",function(data){
+				$.post("./menu_showmenu.action",function(data){
 					$.fn.zTree.init($("#treeMenu"), setting, data);
 				},"json");
 				
