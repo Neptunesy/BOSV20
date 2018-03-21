@@ -5,7 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 /**
- * Created by SY on 2017-07-22.
+ *
+ * @author SY
+ * @date 2017-07-22
  * on BOSV20
  * on 下午 06:09
  */

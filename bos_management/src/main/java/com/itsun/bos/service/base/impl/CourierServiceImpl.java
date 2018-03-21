@@ -22,13 +22,14 @@ import java.util.Set;
  * Created by SY on 2017-07-21.
  * on BOSV20
  * on 下午 06:23
+ * @author sy
  */
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class CourierServiceImpl implements CourierService {
     @Autowired
     private CourierRepository courierRepository;
-    @Transactional
+
     @Override
     public void save(Courier courier) {
         courierRepository.save(courier);
@@ -49,12 +50,9 @@ public class CourierServiceImpl implements CourierService {
 
     @Override
     public List<Courier> findNoassociation() {
-        Specification specification = new Specification() {
-            @Override
-            public Predicate toPredicate(Root root, CriteriaQuery query, CriteriaBuilder cb) {
-                Predicate predicate = cb.isEmpty(root.get("fixedAreas").as(Set.class));
-                return predicate;
-            }
+        Specification specification = (root, query, cb) -> {
+            Predicate predicate = cb.isEmpty(root.get("fixedAreas").as(Set.class));
+            return predicate;
         };
         return courierRepository.findAll(specification);
     }

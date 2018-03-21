@@ -25,7 +25,9 @@ import java.util.Collection;
 import static org.apache.cxf.jaxrs.client.WebClient.create;
 
 /**
- * Created by SY on 2017-07-23.
+ *
+ * @author SY
+ * @date 2017-07-23
  * on BOSV20
  * on 下午 12:09
  */

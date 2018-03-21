@@ -4,7 +4,9 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * Created by xuxiao on 2017/7/22.
+ *
+ * @author xuxiao
+ * @date 2017/7/22
  */
 public class TypeUtils {
 

@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Date;
 
 /**
- * Created by SY on 2017-08-01.
+ *
+ * @author SY
+ * @date 2017-08-01
  * on BOSV20
  * on 21:42
  */

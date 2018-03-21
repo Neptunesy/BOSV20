@@ -289,7 +289,8 @@ public class PinYin4jUtils {
     public static void main(String[] args) {
         // pin4j 简码 和 城市编码
         String s1 = "中华人民共和国";
-        String[] headArray = getHeadByString(s1); // 获得每个汉字拼音首字母
+        // 获得每个汉字拼音首字母
+        String[] headArray = getHeadByString(s1);
         System.out.println(Arrays.toString(headArray));
 
         String s2 = "长城";

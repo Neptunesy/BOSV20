@@ -3,7 +3,9 @@ package com.itsun.bos.utils;
 import java.util.UUID;
 
 /**
- * Created by SY on 2017-07-29.
+ *
+ * @author SY
+ * @date 2017-07-29
  * on BOSV20
  * on 下午 11:29
  */

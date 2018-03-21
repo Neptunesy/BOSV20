@@ -6,6 +6,9 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.scheduling.quartz.AdaptableJobFactory;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author SY
+ */
 @Service("jobFactory")
 public class JobFactory extends AdaptableJobFactory {
 

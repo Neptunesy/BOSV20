@@ -36,7 +36,7 @@
     </bean>
 
     <!-- 配置Realm -->
-    <bean id="bosRealm" class="com.itsun.bos.realm.bosRealm">
+    <bean id="bosRealm" class="com.itsun.bos.realm.BosRealm">
         <!-- 缓存区的名字 就是 ehcache.xml 自定义 cache的name -->
         <property name="authorizationCacheName" value="bos" />
     </bean>

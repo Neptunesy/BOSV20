@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 /**
- * Created by SY on 2017-08-10.
+ *
+ * @author SY
+ * @date 2017-08-10
  * on BOSV20
  * on 18:30
  */

@@ -18,12 +18,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 /**
- * Created by SY on 2017-08-08.
+ *
+ * @author SY
+ * @date 2017-08-08
  * on BOSV20
  * on 19:28
  */
 
-public class bosRealm extends AuthorizingRealm {
+public class BosRealm extends AuthorizingRealm {
 
     @Autowired
     private UserService userService;
@@ -54,9 +56,16 @@ public class bosRealm extends AuthorizingRealm {
         return simpleAuthorizationInfo;
     }
 
+
+    /**
+     *
+     * @param token
+     * @return 认证信息
+     * @throws AuthenticationException
+     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        System.out.println("Shiro 认证管理");
+
         UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) token;
 
         String username = usernamePasswordToken.getUsername();
